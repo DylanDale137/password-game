@@ -1,0 +1,16 @@
+site_name: GameFrame Docs
+theme:
+  name: material
+plugins:
+  - search
+  - mkdocstrings
+
+nav:
+  - Home: index.md
+  - API Reference:
+      - DataBaseController: DataBaseController.md
+      - EntryTextObject: EntryTextObject.md
+      - Globals: Globals.md
+      - Level: Level.md
+      - RoomObject: RoomObject.md
+      - TextObject: TextObject.md
