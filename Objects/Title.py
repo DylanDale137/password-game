@@ -19,7 +19,7 @@ class Title(RoomObject):
         """
         If the key pressed is space the game will start
         """
-        
+       
         if key[pygame.K_SPACE]:
             self.room.running = False
         

@@ -69,6 +69,8 @@ class Character(RoomObject):
         self.num_frames = 4                         # total number of frames per direction
         self.direction = "down"                     # initial direction
         self.moving = False
+        self.register_collision_object("Wall")
+        
 
         # set image
         frames = []                                 # list to hold image frames
@@ -92,7 +94,21 @@ class Character(RoomObject):
             self.current_frame = (self.current_frame + 1) % self.num_frames                 # increment the frame number
         self.set_image(self.image_frames[self.direction][self.current_frame], 100, 98)   # set the new image
         self.set_timer(self.frame_rate, self.update_image)                              # reset the timer to call this method again after frame_rate game frames
-
+     
+    def handle_collision(self, other, other_type):
+        """
+        Handles the collision events for the Asteroid
+        """
+        if other_type == "Wall":
+            if Globals.current_direction == "up":
+                Globals.hit_wall = "up"
+            elif Globals.current_direction == "down":
+                Globals.hit_wall = "down"
+            elif Globals.current_direction == "left":
+                Globals.hit_wall = "left"
+            elif Globals.current_direction == "right":
+                Globals.hit_wall = "right"
+        
     def key_pressed(self, key):
         """
         Respond to keypress up and down
