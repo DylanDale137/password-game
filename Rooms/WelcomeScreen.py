@@ -17,9 +17,8 @@ class WelcomeScreen(Level):
         self.set_background_image("Start_frames\start000.png")
         
         # add title object
-        #self.add_room_object(Title(self, 0, 0))
-        self.add_room_object(Character(self, Globals.SCREEN_WIDTH/2, Globals.SCREEN_HEIGHT/2))
-        self.add_room_object(Wall(self, 240, 200, True))
+        self.add_room_object(Title(self, 0, 0))
+        
         # load sounds
 '''
 # ...existing code...

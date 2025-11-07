@@ -12,7 +12,7 @@ class Wall(RoomObject):
         self.height = 64
         self.can_summon = can_summon
         
-    def key_pressed(self, key):
+    def key_pressed(self):
         if Globals.current_direction == "up":
             self.y += Globals.character_speed 
         elif Globals.current_direction == "down":
