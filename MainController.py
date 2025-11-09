@@ -33,7 +33,7 @@ while Globals.running:
     class_name = getattr(mod, levels[curr_level])
     room = class_name(screen, joysticks)
     exit_val = room.run()
-
+    
     if exit_val is True or Globals.running is False:
 
         Globals.next_level = Globals.end_game_level

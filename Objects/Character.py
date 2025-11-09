@@ -92,7 +92,7 @@ class Character(RoomObject):
     def update_image(self):
         if self.moving:
             self.current_frame = (self.current_frame + 1) % self.num_frames                 # increment the frame number
-        self.set_image(self.image_frames[self.direction][self.current_frame], 100, 98)   # set the new image
+        self.set_image(self.image_frames[self.direction][self.current_frame], 50, 49)   # set the new image
         self.set_timer(self.frame_rate, self.update_image)                              # reset the timer to call this method again after frame_rate game frames
      
     def handle_collision(self, other, other_type):
@@ -108,21 +108,26 @@ class Character(RoomObject):
                 Globals.hit_wall = "left"
             elif Globals.current_direction == "right":
                 Globals.hit_wall = "right"
+
         
     def key_pressed(self, key):
         """
         Respond to keypress up and down
         """
-
+        if Globals.num_of_walls_moved >= Globals.total_walls:
+            Globals.hit_wall = None
+            Globals.num_of_walls_moved = 0
         if key[pygame.K_w]:         
             self.moving = True                          # character is moving
             self.direction = "up"                       # set direction to up
             Globals.current_direction = "up"
+
             
         elif key[pygame.K_s]:
             self.moving = True                          # character is moving
             self.direction = "down"                     # set direction to down
             Globals.current_direction = "down"
+
 
         elif key[pygame.K_a]:
             self.moving = True                          # character is moving
@@ -133,7 +138,7 @@ class Character(RoomObject):
             self.moving = True                          # character is moving
             self.direction = "right"                     # set direction to right
             Globals.current_direction = "right"
-            
+
             
         else:
             self.moving = False                         # no movement

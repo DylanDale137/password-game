@@ -1,18 +1,19 @@
 from GameFrame import RoomObject, Globals
 import pygame
-import random
 
-class Wall(RoomObject):
-    
-    def __init__(self, room, x, y, can_summon):
+class Ytroom(RoomObject):
+    """
+    The object for displaying the title
+    """
+    def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
-        image = self.load_image("wall.png")
-        self.set_image(image,64,64)
-        self.width = 64
-        self.height = 64
-        self.can_summon = can_summon
-        self.handle_key_events = True
-        self.register_collision_object("Character")
+        print("Here")
+        # set image
+        image = self.load_image("rooms\youtube.png")
+        self.set_image(image,448,320)
+        
+        # register for key events
+        self.handle_key_events = True 
         Globals.total_walls += 1
     def key_pressed(self, key):
         if key[pygame.K_w]:
@@ -42,15 +43,3 @@ class Wall(RoomObject):
                 Globals.num_of_walls_moved += 1
             elif Globals.current_direction == "right":
                 self.x -= Globals.character_speed
-
-
-
-    '''        
-    def creating_room(self):
-        if self.can_summon:
-            random_direction = random.choice(["up"])
-            if random_direction == "up":
-                self.room.add_room_object(Wall(self.room, self.x, self.y + self.height, False))
-                self.room.add_room_object(Wall(self.room, self.x, self.y + (self.height*2), True))
-                self.room.add_room_object(Wall(self.room, self.x + (self.width*2), self.y + self.height, False))
-                self.room.add_room_object(Wall(self.room, self.x - (self.width*2), self.y + (self.height*2), False))'''
