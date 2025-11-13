@@ -19,7 +19,7 @@ class GamePlay(Level):
         self.set_background_image("grey_background.png")
         
         # Add player character
-        self.add_room_object(Hacker(self, Globals.SCREEN_WIDTH/2, Globals.SCREEN_HEIGHT/1.5))
+        self.add_room_object(Hacker(self, Globals.SCREEN_WIDTH/2, Globals.SCREEN_HEIGHT/4))
         self.add_room_object(Character(self, Globals.SCREEN_WIDTH/2, Globals.SCREEN_HEIGHT/2))
         
         # Create maze walls (64x64 tiles)
@@ -34,7 +34,68 @@ class GamePlay(Level):
 
         self.text = Text_1(self, Globals.SCREEN_WIDTH/7, Globals.SCREEN_HEIGHT/ 1.2, str(Globals.current_message))
         self.add_room_object(self.text)
-              
+        #starting box left
+        wall_positions.append((start_block_x, start_block_y))
+        wall_positions.append((start_block_x - 64, start_block_y))
+        wall_positions.append((start_block_x - 128, start_block_y))
+        wall_positions.append((start_block_x - 192, start_block_y))
+        wall_positions.append((start_block_x - 256, start_block_y))
+        wall_positions.append((start_block_x - 320, start_block_y))
+        wall_positions.append((start_block_x - 384, start_block_y))
+        wall_positions.append((start_block_x - 448, start_block_y))
+        wall_positions.append((start_block_x - 512, start_block_y))
+        
+        #starting box right
+        
+        wall_positions.append((start_block_x + 192, start_block_y))
+        wall_positions.append((start_block_x + 256, start_block_y))
+        wall_positions.append((start_block_x + 320, start_block_y))
+        wall_positions.append((start_block_x + 384, start_block_y))
+        wall_positions.append((start_block_x + 448, start_block_y))
+        wall_positions.append((start_block_x + 512, start_block_y))
+        wall_positions.append((start_block_x + 576, start_block_y))
+        wall_positions.append((start_block_x + 640, start_block_y))
+        
+        #left wall
+        wall_positions.append((start_block_x-512, start_block_y - 64))
+        wall_positions.append((start_block_x-512, start_block_y - 128))
+        wall_positions.append((start_block_x-512, start_block_y - 196))
+        wall_positions.append((start_block_x-512, start_block_y - 256))
+        wall_positions.append((start_block_x-512, start_block_y - 320))
+        wall_positions.append((start_block_x-512, start_block_y - 384))
+        wall_positions.append((start_block_x-512, start_block_y - 448))
+        wall_positions.append((start_block_x-512, start_block_y - 512))
+
+        
+        #right wall
+        wall_positions.append((start_block_x + 640, start_block_y - 64))
+        wall_positions.append((start_block_x + 640, start_block_y - 128))
+        wall_positions.append((start_block_x + 640, start_block_y - 192))
+        wall_positions.append((start_block_x + 640, start_block_y - 256))
+        wall_positions.append((start_block_x + 640, start_block_y - 320))
+        wall_positions.append((start_block_x + 640, start_block_y - 384))
+        wall_positions.append((start_block_x + 640, start_block_y - 448))
+        wall_positions.append((start_block_x + 640, start_block_y - 512))
+        
+        #top
+        wall_positions.append((start_block_x + 576, start_block_y - 512))
+        wall_positions.append((start_block_x + 512, start_block_y - 512))
+        wall_positions.append((start_block_x - 64, start_block_y - 512))
+        wall_positions.append((start_block_x - 128, start_block_y- 512))
+        wall_positions.append((start_block_x - 192, start_block_y- 512))
+        wall_positions.append((start_block_x - 256, start_block_y- 512))
+        wall_positions.append((start_block_x - 320, start_block_y- 512))
+        wall_positions.append((start_block_x - 384, start_block_y- 512))
+        wall_positions.append((start_block_x - 448, start_block_y- 512))
+        wall_positions.append((start_block_x - 512, start_block_y- 512))
+        wall_positions.append((start_block_x + 128, start_block_y- 512))
+        wall_positions.append((start_block_x + 192, start_block_y- 512))
+        wall_positions.append((start_block_x + 256, start_block_y- 512))
+        wall_positions.append((start_block_x + 320, start_block_y- 512))
+        wall_positions.append((start_block_x + 384, start_block_y- 512))
+        wall_positions.append((start_block_x + 448, start_block_y- 512))
+        wall_positions.append((start_block_x, start_block_y- 512))
+        wall_positions.append((start_block_x + 64, start_block_y- 512))
         for x in range(1):
             for i in range(10):
                 random_direction = random.choice(["up","left","right"])
@@ -234,9 +295,219 @@ class GamePlay(Level):
                 wall_positions.append((start_block_x + 192, start_block_y + 128))
                 wall_positions.append((start_block_x + 192, start_block_y + 192))
                 start_block_y += 192
-
-                
-            
+        start_block_x += 256
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_y -= 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        start_block_x += 64  
+        wall_positions.append((start_block_x, start_block_y))
+        print(start_block_x, start_block_y)
+        start_block_x += random.randint(-856, 1000)
+        start_block_y += random.randint(200, 1180)
+        print(start_block_x, start_block_y)
+        
 
                           
         # Add vertical walls
