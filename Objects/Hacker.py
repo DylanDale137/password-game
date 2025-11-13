@@ -140,8 +140,8 @@ class Hacker(RoomObject):
                 else:
                     self.x -= 5
         if other_type == "Door_1":
-            
-            self.hacking = True
+            if not Globals.got_code:
+                self.hacking = True
             '''self.moving = False
             self.direction = "down"
             
@@ -150,6 +150,9 @@ class Hacker(RoomObject):
         if other_type == "Ytroom" and self.hacking:
             self.y += 64
             self.hacking = False
+            Globals.first_door = False
+            Globals.cracked = True
+            self.room.text.set_text()
                 
             
 

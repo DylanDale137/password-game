@@ -70,6 +70,8 @@ class Character(RoomObject):
         self.direction = "down"                     # initial direction
         self.moving = False
         self.register_collision_object("Wall")
+        self.register_collision_object("reset_unlock")
+        self.register_collision_object("reset_button")
         
 
         # set image
@@ -108,7 +110,16 @@ class Character(RoomObject):
                 Globals.hit_wall = "left"
             elif Globals.current_direction == "right":
                 Globals.hit_wall = "right"
-
+        if other_type == "reset_unlock":
+            Globals.got_code = True
+            Globals.cracked = False
+            self.room.button.update_image()
+            self.room.text.set_text()
+            self.room.delete_object(other)
+        if other_type == "reset_button":
+            if Globals.success_pas == True:
+                Globals.won = True
+                self.room.running = False
         
     def key_pressed(self, key):
         """

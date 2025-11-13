@@ -8,6 +8,8 @@ from Objects.Hacker import Hacker
 from Objects.Ytroom import Ytroom
 from Objects.Hud import Text_1, Password_set_1
 from Objects.Door_1 import Door_1
+from Objects.reset_unlock import reset_unlock
+from Objects.reset_button import reset_button
 '''
 from Objects.Hud import Score, Lives'''
 
@@ -30,7 +32,8 @@ class GamePlay(Level):
         start_block_x = 440
         most_recent_direction = None
         repeat = 1
-        
+        self.button = reset_button(self, start_block_x - 64 , start_block_y - 200)
+        self.add_room_object(self.button)
 
         self.text = Text_1(self, Globals.SCREEN_WIDTH/7, Globals.SCREEN_HEIGHT/ 1.2, str(Globals.current_message))
         self.add_room_object(self.text)
@@ -507,7 +510,7 @@ class GamePlay(Level):
         start_block_x += random.randint(-856, 1000)
         start_block_y += random.randint(200, 1180)
         print(start_block_x, start_block_y)
-        
+        self.add_room_object(reset_unlock(self, start_block_x, start_block_y))
 
                           
         # Add vertical walls

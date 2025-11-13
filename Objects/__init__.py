@@ -5,3 +5,5 @@ from Objects.Hacker import Hacker
 from Objects.Ytroom import Ytroom
 from Objects.Hud import Text_1, Password_set_1
 from Objects.Door_1 import Door_1
+from Objects.reset_button import reset_button
+from Objects.reset_unlock import reset_unlock
