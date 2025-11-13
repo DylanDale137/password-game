@@ -6,6 +6,8 @@ from Objects.Walls import Wall
 import random
 from Objects.Hacker import Hacker
 from Objects.Ytroom import Ytroom
+from Objects.Hud import Text_1, Password_set_1
+from Objects.Door_1 import Door_1
 '''
 from Objects.Hud import Score, Lives'''
 
@@ -28,7 +30,12 @@ class GamePlay(Level):
         start_block_x = 440
         most_recent_direction = None
         repeat = 1
-        for x in range(4):
+        
+
+        self.text = Text_1(self, Globals.SCREEN_WIDTH/7, Globals.SCREEN_HEIGHT/ 1.2, str(Globals.current_message))
+        self.add_room_object(self.text)
+              
+        for x in range(1):
             for i in range(10):
                 random_direction = random.choice(["up","left","right"])
 
@@ -216,7 +223,8 @@ class GamePlay(Level):
                 self.add_room_object(Wall(self, start_block_x + 448 - 64, start_block_y + 384, False))
                 self.add_room_object(Wall(self, start_block_x + 384 - 64, start_block_y + 384, False))
                 self.add_room_object(Wall(self, start_block_x + 320 - 64, start_block_y + 384, False))
-
+                self.door_1_spot = Door_1(self, start_block_x + 64, start_block_y - 192)
+                self.add_room_object(self.door_1_spot)
                 repeat +=1
                 start_block_y += 320
                 wall_positions.append((start_block_x, start_block_y + 64))
@@ -236,3 +244,6 @@ class GamePlay(Level):
         # Add horizontal walls
         for pos in wall_positions:
             self.add_room_object(Wall(self, pos[0], pos[1], False))
+        
+
+        

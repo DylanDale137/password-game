@@ -1,24 +1,28 @@
 from GameFrame import RoomObject, Globals
 import pygame
-from Objects.Hud import Text_1, Password_set_1
+from Objects.Hud import Password_set_1
 
-class Ytroom(RoomObject):
-    """
-    The object for displaying the title
-    """
+class Door_1(RoomObject):
+    
     def __init__(self, room, x, y):
         RoomObject.__init__(self, room, x, y)
-        print("Here")
-        # set image
-        image = self.load_image("rooms\youtube.png")
-        self.set_image(image,448,320)
-        
-        # register for key events
-        self.handle_key_events = True 
+        self.width = 64
+        self.height = 64
+        self.locked = False
+        self.handle_key_events = True
+
         Globals.total_walls += 1
-    
+        self.update_image()
         
 
+    def update_image(self):
+        if self.locked == False:
+            image = self.load_image(f"Door_frames\door008.png")
+            self.set_image(image, 128, 256)
+        else:
+            
+            image = self.load_image(f"Door_frames\door000.png")
+            self.set_image(image, 128, 256)
     def key_pressed(self, key):
         if key[pygame.K_w]:
             if Globals.hit_wall == "up":
@@ -47,5 +51,10 @@ class Ytroom(RoomObject):
                 Globals.num_of_walls_moved += 1
             elif Globals.current_direction == "right":
                 self.x -= Globals.character_speed
-        
-            
+        if self.y <= Globals.SCREEN_HEIGHT/2 - 320:
+            if Globals.start == True:
+                self.room.text.set_text()
+                self.room.add_room_object(Password_set_1(self.room, Globals.SCREEN_WIDTH/2, Globals.SCREEN_HEIGHT/1.8, ""))       
+            Globals.start = False
+            Globals.password_entering = True
+            self.room.text.set_text()

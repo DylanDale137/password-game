@@ -38,7 +38,7 @@ while Globals.running:
 
         Globals.next_level = Globals.end_game_level
 
-        if len(levels) == 1:
+        if len(levels) == 1:   
             break
 
     if Globals.exiting:
