@@ -72,10 +72,11 @@ class Hacker(RoomObject):
         self.register_collision_object("Wall")
         self.register_collision_object("Door_1")
         self.register_collision_object("Ytroom")
+        self.register_collision_object("Character")
         self.can_collide = True
         self.can_reset = False
         self.hacking = False
-
+        self.can_hack = True
         # set image
         frames = []                                 # list to hold image frames
         for index in range(self.total_frames):      # load each image frame from the Hacker_frames folder
@@ -140,7 +141,7 @@ class Hacker(RoomObject):
                 else:
                     self.x -= 5
         if other_type == "Door_1":
-            if not Globals.got_code:
+            if self.can_hack:
                 self.hacking = True
             '''self.moving = False
             self.direction = "down"
@@ -152,7 +153,10 @@ class Hacker(RoomObject):
             self.hacking = False
             Globals.first_door = False
             Globals.cracked = True
+            self.can_hack = False
             self.room.text.set_text()
+        if other_type == "Character":
+            self.room.running = False
                 
             
 
