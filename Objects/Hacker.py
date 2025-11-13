@@ -152,6 +152,7 @@ class Hacker(RoomObject):
             self.y += 64
             self.hacking = False
             Globals.first_door = False
+            Globals.password_entering = False
             Globals.cracked = True
             self.can_hack = False
             self.room.text.set_text()

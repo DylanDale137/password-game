@@ -55,8 +55,8 @@ class Door_1(RoomObject):
             if Globals.start == True:
                 self.room.text.set_text()
                 self.room.add_room_object(Password_set_1(self.room, Globals.SCREEN_WIDTH/2, Globals.SCREEN_HEIGHT/1.8, ""))       
-            Globals.start = False
-            Globals.password_entering = True
+                Globals.start = False
+                Globals.password_entering = True
             self.room.text.set_text()
         if self.y >= Globals.SCREEN_HEIGHT/2 - 320:
             if Globals.got_code:
